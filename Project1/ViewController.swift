@@ -32,9 +32,20 @@ class ViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Picture", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Picture", for: indexPath) //Cria uma constante chamada cell que faz o dequeuing de uma cell reciclada da table(ios recicla cells para mostrar novas cells, o que permite que varias sejam mostradas sem impactar na performance)
         cell.textLabel?.text = pictures[indexPath.row]
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //Tenta carregar o detail view controller e faz o typecast para ser DetailViewController
+        if let vc = storyboard?.instantiateViewController(identifier: "Detail") as? DetailViewController //
+        {
+            //Atribui a selectedImage a foto no indexPath selecionado
+            vc.selectedImage = pictures[indexPath.row]
+            //empurra para o navigation controller
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
 
