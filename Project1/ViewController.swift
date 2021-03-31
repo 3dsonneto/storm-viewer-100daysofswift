@@ -13,7 +13,9 @@ class ViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        title = "Storm Viewer"
+        navigationController?.navigationBar.prefersLargeTitles = true
         
         let fm = FileManager.default //fm pega o valor retornado por FileManager.default, que permite trabalhar com arquivos
         let path = Bundle.main.resourcePath! //Me conte onde eu acho as imagens, o bundle é um diretorio que contem o programa compilado e os assets.
